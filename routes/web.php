@@ -35,7 +35,7 @@ Route::get('iti', function(){
 
 Route::get('students', function(){
     $students = [
-        ["id"=>"1", "name"=>"Ahmed"], 
+        ["id"=>"1", "name"=>"Ahmed"],
         ["id"=>"2", "name"=>"Mohamed"],
         ["id"=>"3", "name"=>"Ali"]
 
@@ -44,11 +44,11 @@ Route::get('students', function(){
 });
 
 
-# send id as a paramter to the url ? 
+# send id as a paramter to the url ?
 # {} ==> this a mandatory changable part in the url
 Route::get('students/{id}', function($id){
     $students = [
-        ["id"=>"1", "name"=>"Ahmed"], 
+        ["id"=>"1", "name"=>"Ahmed"],
         ["id"=>"2", "name"=>"Mohamed"],
         ["id"=>"3", "name"=>"Ali"]
 
@@ -63,11 +63,21 @@ Route::get('students/{id}', function($id){
 });
 
 
+### I need to list routes in my laravel application
+# php artisan route:list
+
+# I need to create controller ==> each route is associated with controller function
+
+# to create controller
+# use php artisan make:controller StudentController
 
 
 
+use App\Http\Controllers\ITIController;
+Route::get('iti/students',[ITIController::class, 'studentsIndex'] );
 
 
+Route::get('iti/students/{id}', [ITIController::class, 'show']);
 
 
 
