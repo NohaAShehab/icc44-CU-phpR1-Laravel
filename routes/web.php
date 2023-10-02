@@ -83,3 +83,7 @@ Route::get("iti/land", [ITIController::class, 'landing']);
 
 Route::get('iti/landing',[ITIController::class, 'landingblade']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
