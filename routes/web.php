@@ -79,5 +79,7 @@ Route::get('iti/students',[ITIController::class, 'studentsIndex'] );
 
 Route::get('iti/students/{id}', [ITIController::class, 'show']);
 
+Route::get("iti/land", [ITIController::class, 'landing']);
 
+Route::get('iti/landing',[ITIController::class, 'landingblade']);
 

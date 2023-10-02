@@ -28,4 +28,19 @@ class ITIController extends Controller
         }
         return abort('404');
     }
+
+
+    function landing(){
+
+        # send data to the php view
+        return view('landing', ["students"=>$this->students]);
+    }
+
+    function landingblade(){
+        return view('landingb', ["students"=>$this->students, 'name'=>'Noha']);
+    }
 }
+
+
+
+
