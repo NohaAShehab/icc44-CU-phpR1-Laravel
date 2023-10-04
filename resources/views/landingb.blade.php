@@ -1,23 +1,26 @@
 @extends('layouts.app')
 
 
-@section('body')
+@section('alaa')
 <h1> Welcome to iti landing page </h1>
 
-    <table class="table">
-        <tr> <th> ID</th> <th>Name</th>
-            <th> Show </th>
-        </tr>
-
+        <div class="row">
         @foreach($students as $student)
-            <tr><td>{{$student['id']}}</td>
-                <td>{{$student['name']}}</td>
-                <td> <a href="/iti/students/{{$student['id']}}"  class="btn btn-info"> Show</a></td>
-            </tr>
-
+            <div class="col-lg-4">
+            <div class="card " style="width: 18rem;">
+                <img src="{{asset('images/iti/'.$student['image'])}}"
+                     width="200" height="200"
+                     class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{$student["name"]}}</h5>
+                    <a href="{{route('iti.show', $student['id'])}}" class="btn btn-primary">Show</a>
+                </div>
+            </div>
+            </div>
         @endforeach
 
-    </table>
+        </div>
+
 @endsection
 
 

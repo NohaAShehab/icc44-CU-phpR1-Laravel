@@ -77,7 +77,7 @@ use App\Http\Controllers\ITIController;
 Route::get('iti/students',[ITIController::class, 'studentsIndex'] );
 
 
-Route::get('iti/students/{id}', [ITIController::class, 'show']);
+Route::get('iti/students/{id}', [ITIController::class, 'show'])->name('iti.show');
 
 Route::get("iti/land", [ITIController::class, 'landing']);
 

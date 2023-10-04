@@ -77,10 +77,7 @@
         </main>
 
           <div class="bg-danger text-white">
-              @yield('body')
-
-
-
+              @yield('alaa')
         </div>
     </div>
 </body>

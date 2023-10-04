@@ -8,9 +8,9 @@ class ITIController extends Controller
 {
     //
     private $students = [
-        ["id"=>"1", "name"=>"Ahmed"],
-        ["id"=>"2", "name"=>"Mohamed"],
-        ["id"=>"3", "name"=>"Ali"]
+        ["id"=>"1", "name"=>"Ahmed", 'image'=>'pic2.png'],
+        ["id"=>"2", "name"=>"Mohamed", 'image'=>'pic3.png'],
+        ["id"=>"3", "name"=>"Ali", 'image'=>'pic4.png']
 
     ];
 
