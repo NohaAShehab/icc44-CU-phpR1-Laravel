@@ -80,10 +80,11 @@ Route::get('iti/landing',[ITIController::class, 'landingblade']);
 
 Route::get('db/students', [StudentController::class,'index_db'])->name('students.db');
 
-Route::get('stds', [StudentController::class, 'index'])->name('students.index');  # name routes
-
-
-
+Route::get('students', [StudentController::class, 'index'])->name('students.index');  # name routes
+Route::get('students/create', [StudentController::class, 'create'])->name('students.create');
+Route::get('students/{id}',[StudentController::class, 'show'])->name('students.show');
+Route::get('students/{id}/delete', [StudentController::class, 'destroy'])->name('students.destroy');
+Route::post('students', [StudentController::class, 'store'])->name('students.store');
 ############################################### Auth
 Auth::routes();
 
