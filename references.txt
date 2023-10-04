@@ -17,3 +17,20 @@ let's create model class ?
 
 best practice --> if you have table --> students  ---so name its related model as Student
 
+
+
+----> Models
+https://laravel.com/docs/10.x/eloquent
+data retrieval
+
+--- use tinker tool -->to simulate how laravel gets the data from database
+https://laravel.com/docs/10.x/eloquent#retrieving-models
+
+php artisan tinker
+in the controller
+use App\Models\Student;
+$students = Student::all();
+
+
+use query builder
+https://laravel.com/docs/10.x/queries
