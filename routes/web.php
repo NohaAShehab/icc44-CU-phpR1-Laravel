@@ -83,6 +83,10 @@ Route::get("iti/land", [ITIController::class, 'landing']);
 
 Route::get('iti/landing',[ITIController::class, 'landingblade']);
 
+###########################
+
+
+
 
 Auth::routes();
 

@@ -1,0 +1,19 @@
+
+
+"Migration files --> create db structure"
+1- migrations
+https://laravel.com/docs/10.x/migrations
+
+2- available datatype
+https://laravel.com/docs/10.x/migrations#creating-columns
+
+note that all columns in tables are not null by default unless you say something else.
+
+
+3- How can the laravel application deals with database ::
+This the role of the model class
+
+let's create model class ?
+
+best practice --> if you have table --> students  ---so name its related model as Student
+
