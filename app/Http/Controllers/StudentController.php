@@ -45,11 +45,18 @@ class StudentController extends Controller
 
     function store()
     {
-//        dd('data received');
-//        dd($_POST);
 
-        # laravel introduce request function
-        $data = \request();  # returns with request object- --> holding the data
+        # validate data in backend
+
+        \request()->validate([
+
+            "name"=>"required|min:5",
+            "email"=>"required|unique:students"
+        ],[
+            "name.required"=>"Student name is required",
+            'name.min'=>'Student name must be at least 5 chars.'
+        ]);
+
         $name = \request()->get('name');
         $email = \request()->get('email');
         $grade = \request()->get('grade');
@@ -62,8 +69,6 @@ class StudentController extends Controller
         $student->grade = $grade;
         $student->save();
 
-//        dd($student->id);
-//        return to_route('students.index');
         return to_route('students.show', $student->id);
 
     }

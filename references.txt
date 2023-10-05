@@ -34,3 +34,14 @@ $students = Student::all();
 
 use query builder
 https://laravel.com/docs/10.x/queries
+
+
+############### form validation
+https://laravel.com/docs/10.x/validation#main-content
+
+Available validation rules ?
+https://laravel.com/docs/10.x/validation#available-validation-rules
+
+
+Displaying validation errors
+https://laravel.com/docs/10.x/validation#quick-displaying-the-validation-errors
