@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ITIController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TrackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +86,11 @@ Route::get('students/create', [StudentController::class, 'create'])->name('stude
 Route::get('students/{id}',[StudentController::class, 'show'])->name('students.show');
 Route::get('students/{id}/delete', [StudentController::class, 'destroy'])->name('students.destroy');
 Route::post('students', [StudentController::class, 'store'])->name('students.store');
+
+#################################################3
+#### generate Track routes in one line using resource Controller
+Route::resource('tracks', TrackController::class);
+
 ############################################### Auth
 Auth::routes();
 

@@ -45,3 +45,30 @@ https://laravel.com/docs/10.x/validation#available-validation-rules
 
 Displaying validation errors
 https://laravel.com/docs/10.x/validation#quick-displaying-the-validation-errors
+
+
+##### Resource controller
+
+Route::resource('tracks', TrackController::class);
+
+This the result
+GET|HEAD        tracks ................................. tracks.index › TrackController@index
+  POST            tracks ...................................... tracks.store › TrackController@store
+  GET|HEAD        tracks/create ........................................ tracks.create › TrackController@create
+  GET|HEAD        tracks/{track} ...................................... tracks.show › TrackController@show
+  PUT|PATCH       tracks/{track} ......................... tracks.update › TrackController@update
+  DELETE          tracks/{track} ................................ tracks.destroy › TrackController@destroy
+  GET|HEAD        tracks/{track}/edit ................................ tracks.edit › TrackController@edit
+
+
+
+
+
+
+
+
+
+
+
+
+
