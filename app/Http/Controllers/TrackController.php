@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Track;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTrackRequest;
+use App\Http\Requests\UpdateTrackRequest;
 
 class TrackController extends Controller
 {
@@ -30,24 +32,9 @@ class TrackController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTrackRequest $request)
     {
-        //
-//        dd($request);
 
-        $request->validate([
-            "name"=>"required|min:2"
-        ]);
-
-//        $name = $request->get('name');
-//        dd($name);
-        # save object ---> use create function
-
-//        dd($request->all());
-
-//        Track::create(['name'=>$request->get('name'), 'description'=>$request->get('description')]);
-
-        # create function --> use mass assignment
         Track::create($request->all());
 
         return to_route('tracks.index');
@@ -77,11 +64,9 @@ class TrackController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Track $track)
+    public function update(UpdateTrackRequest $request, Track $track)
     {
-        //
-//        dd($request->all());
-        $request->validate(['name'=>"required|min:2"]);
+
         $track->update($request->all());
         return to_route('tracks.show', $track->id);
 
