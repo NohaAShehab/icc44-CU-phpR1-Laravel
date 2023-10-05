@@ -62,7 +62,15 @@ GET|HEAD        tracks ................................. tracks.index › TrackC
 
 
 
+################ each student study in only one specific track ?
 
+one to many
+
+==>db --> migration
+(modify students table --> to add fk track_id ? )
+php artisan make:migration add_track_column_to_students_table
+
+==> model -->
 
 
 
