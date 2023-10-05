@@ -71,7 +71,8 @@ one to many
 php artisan make:migration add_track_column_to_students_table
 
 ==> model -->
-
+define relation to the model
+-each students belongs to one track -
 
 
 

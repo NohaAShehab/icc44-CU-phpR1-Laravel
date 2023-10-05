@@ -13,5 +13,14 @@
             <a href="{{route('tracks.index')}}" class="btn btn-primary">Back to all Tracks </a>
         </div>
     </div>
+    <h1> Students in this Track </h1>
 
+{{--    @dump($track->students)--}}
+    <ol>
+        @foreach($track->students as $std)
+            <li> <a href="{{route('students.show', $std->id)}}"> {{$std->name}}</a></li>
+
+        @endforeach
+
+    </ol>
 @endsection
