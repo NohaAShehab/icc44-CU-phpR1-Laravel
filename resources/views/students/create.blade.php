@@ -48,6 +48,17 @@
                    aria-describedby="emailHelp">
         </div>
 
+        <div class="mb-3">
+            <label class="form-label">Track </label>
+            <select class="form-select"  name='track_id' aria-label="Default select example">
+                <option selected disabled value="">Open this select menu</option>
+                @foreach($tracks as $track)
+                <option value="{{$track->id}}">{{$track->name}}</option>
+                @endforeach
+
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

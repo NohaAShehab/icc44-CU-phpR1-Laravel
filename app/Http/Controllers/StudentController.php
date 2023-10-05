@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Student;
+use App\Models\Track;
+
 
 class StudentController extends Controller
 {
@@ -39,7 +41,9 @@ class StudentController extends Controller
     # create
 
     function  create(){
-        return view('students.create');
+
+        $tracks = Track::all();
+        return view('students.create',['tracks'=>$tracks]);
 
     }
 
@@ -61,12 +65,13 @@ class StudentController extends Controller
         $email = \request()->get('email');
         $grade = \request()->get('grade');
         $image = \request()->get('image');
-
+        $track_id = \request()->get('track_id');
         $student = new Student();
         $student->name= $name;
         $student->email = $email;
         $student->image= $image;
         $student->grade = $grade;
+        $student->track_id = $track_id;
         $student->save();
 
         return to_route('students.show', $student->id);
