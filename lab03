@@ -1,0 +1,31 @@
+1-create migration file for categories table
+    category
+        id
+        name
+        logo: image
+
+
+2-create All crud operations for category model
+using ResourceController and Customized requests
+
+hint --> upload image
+
+Don't forget to add enctype='multipart form-data' to the form
+you will find the image in request.files.
+
+
+3- apply one to many relationship between product and category ?
+
+4- modify product --> in create , update to include category
+
+5- display products in this category
+
+6- when you display product details you should display category (hyperlink)
+
+7- create 100 category using factories
+https://laravel.com/docs/10.x/seeding#using-model-factories
+
+
+
+
+
