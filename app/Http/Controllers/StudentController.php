@@ -102,14 +102,25 @@ class StudentController extends Controller
     function destroy( $id)
     {
 
-        if (! Gate::allows('is-admin')) {
-            abort(403);
+//        if (! Gate::allows('is-admin')) {
+//            abort(403);
+//        }
+
+        $user= Auth::user();
+        $student = Student::findorfail($id);
+
+        $response = Gate::inspect('destroy', $student);
+//        dd($response->allowed());
+        if($response->allowed()) {
+            $student->delete();
+            return to_route('students.index');
         }
 
-        $student = Student::findorfail($id);
-        $student->delete();
-//        return 'deleted';
-        return to_route('students.index');
+
+        return  abort(403);
+
+
+
     }
 
 
