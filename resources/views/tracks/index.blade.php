@@ -15,6 +15,7 @@
                     <td> {{$track->name}}</td>
                     <td> <a href="{{route('tracks.show', $track->id)}}" class="btn btn-info"> Show </a></td>
                     <td> <a href="{{route('tracks.edit', $track->id)}}" class="btn btn-warning"> Edit </a></td>
+                    @if(\Illuminate\Support\Facades\Auth::id())
                     <td>
                         <form action="{{route('tracks.destroy', $track->id)}}" method="post">
                             @csrf
@@ -22,6 +23,9 @@
                             <input type="submit"   class="btn btn-danger" value="Delete">
                         </form>
                     </td>
+                    @else
+                        <td>Please login to use this functionality</td>
+                    @endif
                 </tr>
 
 
