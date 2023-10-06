@@ -88,3 +88,11 @@ php artisan make:request StoreTrackRequest
 modify track name to be unique -->database ?
 
 php artisan make:migration modify_name_in_tracks_table --table tracks
+
+
+########## Authentication
+https://laravel.com/docs/10.x/authentication
+
+# middleware --> use authentication to some of routes --> needs the user to login in
+
+students --> create, update, destroy --> only authenticated users

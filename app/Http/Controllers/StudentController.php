@@ -14,6 +14,11 @@ class StudentController extends Controller
 {
     //
 
+    function __construct(){
+//        $this->middleware('auth')->only(['store', 'update', 'destroy']);
+//        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     function  index(){
         # this function select * from students table;
         /**
