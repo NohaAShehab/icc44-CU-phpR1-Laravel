@@ -15,7 +15,7 @@ class TrackController extends Controller
     public function index()
     {
         //
-        $tracks = Track::all(['id', 'name']);
+        $tracks = Track::all();
 //        return $tracks;
         return view('tracks.index', ['tracks'=>$tracks]);
     }

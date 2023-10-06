@@ -12,7 +12,10 @@ class Student extends Model
     # Student model in laravel --> application connect this model with table named = students
     use HasFactory;
 
+    protected $fillable = ['name', 'email', 'image','track_id', 'grade','creator_id'];
     ## define relation between  track model and student model
+
+
 
     function track(){
         return $this->belongsTo(Track::class);

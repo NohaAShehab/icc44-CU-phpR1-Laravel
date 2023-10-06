@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::Student;
 
     /**
      * Create a new controller instance.
@@ -37,4 +37,12 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    # you can override trait function
+//    public function showLoginForm()
+//    {
+////        dd("login");
+//        return view('auth.login');
+//    }
+
 }

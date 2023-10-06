@@ -27,6 +27,13 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <a class="navbar-brand" href="{{ route('students.index')}}">
+                    Students
+                </a>
+
+                <a class="navbar-brand" href="{{ route('tracks.index')}}">
+                    Tracks
+                </a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">

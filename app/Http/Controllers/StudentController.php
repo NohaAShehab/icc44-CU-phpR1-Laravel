@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Student;
 use App\Models\Track;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class StudentController extends Controller
@@ -17,6 +19,9 @@ class StudentController extends Controller
         /**
             geT DATA using eloquent models
          */
+
+       dump(Auth::user());
+       dump(Auth::id());
         $students = Student::all();  # Eloquent orm
 //        return $students;
         return view('students.index', ['students'=>$students]);
@@ -61,18 +66,22 @@ class StudentController extends Controller
             'name.min'=>'Student name must be at least 5 chars.'
         ]);
 
-        $name = \request()->get('name');
-        $email = \request()->get('email');
-        $grade = \request()->get('grade');
-        $image = \request()->get('image');
-        $track_id = \request()->get('track_id');
-        $student = new Student();
-        $student->name= $name;
-        $student->email = $email;
-        $student->image= $image;
-        $student->grade = $grade;
-        $student->track_id = $track_id;
-        $student->save();
+//        $name = \request()->get('name');
+//        $email = \request()->get('email');
+//        $grade = \request()->get('grade');
+//        $image = \request()->get('image');
+//        $track_id = \request()->get('track_id');
+//        $student = new Student();
+//        $student->name= $name;
+//        $student->email = $email;
+//        $student->image= $image;
+//        $student->grade = $grade;
+//        $student->track_id = $track_id;
+//        $student->save();
+        $requestdata = \request()->all();
+        $requestdata['creator_id'] = Auth::id();
+
+        $student=Student::create($requestdata);
 
         return to_route('students.show', $student->id);
 
