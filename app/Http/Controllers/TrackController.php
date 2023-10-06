@@ -34,8 +34,14 @@ class TrackController extends Controller
      */
     public function store(StoreTrackRequest $request)
     {
+        $request_data = $request->all();
+        if($request->hasFile("logo")){
+            $logo= $request_data["logo"];
+            $path = $logo->store("uploadedfile",'track_uploads' );
+            $request_data["logo"]= $path;
+        }
 
-        Track::create($request->all());
+        Track::create($request_data);
 
         return to_route('tracks.index');
 
@@ -77,7 +83,13 @@ class TrackController extends Controller
      */
     public function destroy(Track $track)
     {
-        //
+        if($track->logo){
+            try {
+                unlink("images/track_logo/{$track->logo}");
+            }catch (\Exception $e){
+                dd($e);
+            }
+        }
         $track->delete();
         return to_route('tracks.index');
 

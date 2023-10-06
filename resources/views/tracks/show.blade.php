@@ -6,6 +6,9 @@
 
     <div class="card " style="width: 18rem;">
         <div class="card-body">
+            <img src="{{asset('images/track_logo/'.$track->logo)}}"
+                 width="200" height="200"
+                 class="card-img-top" alt="...">
             <h5 class="card-title">{{$track->name}}</h5>
             <h5> Description: {{$track->description}} </h5>
             <h5> Created at : {{$track->created_at}} </h5>

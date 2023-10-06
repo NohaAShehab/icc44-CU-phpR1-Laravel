@@ -10,8 +10,7 @@ class Track extends Model
 {
     use HasFactory;
 
-    protected $fillable= ['name', 'description'];  # pass only these keywords to the create function
-//    protected $guarded=['csrf_token'];  # don't pass this keyword
+    protected $fillable= ['name', 'description', "logo"];  # pass only these keywords to the create function
 
     function students(){
 
