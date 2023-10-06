@@ -96,3 +96,13 @@ https://laravel.com/docs/10.x/authentication
 # middleware --> use authentication to some of routes --> needs the user to login in
 
 students --> create, update, destroy --> only authenticated users
+
+
+
+Authorization:
+logged_in user can do something
+
+--->use gates , policies, middleware
+
+--> modify user to have role --> admin, manager, employee
+--> user logged

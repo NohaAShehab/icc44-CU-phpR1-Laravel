@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Student;
 use App\Models\Track;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 
 
@@ -25,8 +26,8 @@ class StudentController extends Controller
             geT DATA using eloquent models
          */
 
-       dump(Auth::user());
-       dump(Auth::id());
+//       dump(Auth::user());
+//       dump(Auth::id());
         $students = Student::all();  # Eloquent orm
 //        return $students;
         return view('students.index', ['students'=>$students]);
@@ -100,6 +101,11 @@ class StudentController extends Controller
     # delete
     function destroy( $id)
     {
+
+        if (! Gate::allows('is-admin')) {
+            abort(403);
+        }
+
         $student = Student::findorfail($id);
         $student->delete();
 //        return 'deleted';

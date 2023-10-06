@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         Schema::defaultStringLength(191);
 
+        # you can register here
+
 
     }
 }

@@ -16,6 +16,16 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+                <div>
+                    @can('is-admin')
+                            <h1 class="btn btn-danger"> Welcome Admin </h1>
+                    @elsecan('is-manager')
+                        <h1 class="btn btn-success"> Welcome Manager </h1>
+                    @elsecan('is-emp')
+                        <h1 class="btn btn-primary"> Welcome Employee </h1>
+                    @endcan
+
+                </div>
             </div>
         </div>
     </div>
