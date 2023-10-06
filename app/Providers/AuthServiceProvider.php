@@ -7,7 +7,9 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 use App\Models\Student;
+use App\Models\Track;
 use App\Policies\StudentPolicy;
+use App\Policies\TrackPolicy;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -18,7 +20,9 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         //
 
-        Student::class => StudentPolicy::class
+        Student::class => StudentPolicy::class,
+        Track::class =>TrackPolicy::class,
+
     ];
 
     /**

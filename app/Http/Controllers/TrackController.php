@@ -6,12 +6,14 @@ use App\Models\Track;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreTrackRequest;
 use App\Http\Requests\UpdateTrackRequest;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 class TrackController extends Controller
 {
 
     function __construct(){
-        $this->middleware(['auth'])->only(['store', 'update', 'destroy']);
+//        $this->middleware(['auth'])->only(['store', 'update', 'destroy']);
+        $this->middleware(['iti'])->only('store');
     }
     /**
      * Display a listing of the resource.
@@ -38,6 +40,8 @@ class TrackController extends Controller
      */
     public function store(StoreTrackRequest $request)
     {
+
+//        dd("this is the next");
         $request_data = $request->all();
         if($request->hasFile("logo")){
             $logo= $request_data["logo"];
@@ -77,8 +81,14 @@ class TrackController extends Controller
     public function update(UpdateTrackRequest $request, Track $track)
     {
 
-        $track->update($request->all());
-        return to_route('tracks.show', $track->id);
+        $allowed = Gate::inspect('update', $track);
+
+        if ($allowed->allowed()){
+            $track->update($request->all());
+            return to_route('tracks.show', $track->id);
+        }
+
+        return  abort(403);
 
     }
 

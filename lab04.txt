@@ -1,0 +1,14 @@
+
+
+1- restrict creating products to only authenticated user (logged_id)
+
+2- restrict deleting and editing products to only the product creator or admin ?
+
+--> modify users table to have role column (admin, user)
+
+3- modify delete in categories  ---> to be soft delete (search)
+
+4- create middleware verify that product or category name doesn't contains keyword
+'amazon'
+
+## hide product -->

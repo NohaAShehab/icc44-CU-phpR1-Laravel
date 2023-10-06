@@ -17,8 +17,6 @@ class StudentPolicy
     }
     public function destroy(User $user, Student $student): bool
     {
-        return $user->id === $student->creator_id
-            ? true
-            : false;
+        return $user->id === $student->creator_id;
     }
 }
