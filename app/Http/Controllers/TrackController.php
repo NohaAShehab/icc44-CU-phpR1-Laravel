@@ -9,6 +9,10 @@ use App\Http\Requests\UpdateTrackRequest;
 
 class TrackController extends Controller
 {
+
+    function __construct(){
+        $this->middleware(['auth'])->only(['store', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      */
