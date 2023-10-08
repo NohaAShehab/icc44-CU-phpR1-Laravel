@@ -18,7 +18,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-use App\Http\Controllers\api\StudnetController;
-Route::get("students", [StudnetController::class, 'index']);
-Route::get('students/{student}', [StudnetController::class, 'show']);
+use App\Http\Controllers\api\StudentController;
+Route::apiResource('students', StudentController::class);
 
+//
+//GET|HEAD        api/students ............................ students.index › api\StudentController@index
+//  POST            api/students ........................ students.store › api\StudentController@store
+//  GET|HEAD        api/students/{student} ........................ students.show › api\StudentController@show
+//  PUT|PATCH       api/students/{student} ........................ students.update › api\StudentController@update
+//  DELETE          api/students/{student} .................... students.destroy › api\StudentController@destroy
