@@ -4,12 +4,14 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\Track;
 use App\Policies\StudentPolicy;
 use App\Policies\TrackPolicy;
+use App\Policies\UserPolicy;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -22,6 +24,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Student::class => StudentPolicy::class,
         Track::class =>TrackPolicy::class,
+        User::class =>UserPolicy::class,
 
     ];
 
@@ -30,7 +33,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // when user logs in to the system -->
         Gate::define('is-admin', function (User $user) {
             return $user->role === "admin";
         });
@@ -40,6 +43,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('is-emp', function (User $user) {
             return $user->role === "emp";
         });
+
 
 
     }

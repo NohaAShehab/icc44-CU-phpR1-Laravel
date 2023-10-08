@@ -16,7 +16,7 @@ class EnsureNameisValid
     public function handle(Request $request, Closure $next): Response
     {
 
-//        dd($request);
+
         $name = $request->get('name');
         if ($name !== "iti"){
             return $next($request);

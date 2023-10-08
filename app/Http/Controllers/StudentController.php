@@ -26,17 +26,14 @@ class StudentController extends Controller
             geT DATA using eloquent models
          */
 
-//       dump(Auth::user());
-//       dump(Auth::id());
+
         $students = Student::all();  # Eloquent orm
-//        return $students;
         return view('students.index', ['students'=>$students]);
     }
 
     function  index_db(){
 
         $students=  DB::table('students')->get();
-//        return $students;
         return view('students.index', ['students'=>$students]);
     }
 
@@ -72,18 +69,7 @@ class StudentController extends Controller
             'name.min'=>'Student name must be at least 5 chars.'
         ]);
 
-//        $name = \request()->get('name');
-//        $email = \request()->get('email');
-//        $grade = \request()->get('grade');
-//        $image = \request()->get('image');
-//        $track_id = \request()->get('track_id');
-//        $student = new Student();
-//        $student->name= $name;
-//        $student->email = $email;
-//        $student->image= $image;
-//        $student->grade = $grade;
-//        $student->track_id = $track_id;
-//        $student->save();
+
         $requestdata = \request()->all();
         $requestdata['creator_id'] = Auth::id();
 
@@ -101,24 +87,39 @@ class StudentController extends Controller
     # delete
     function destroy( $id)
     {
-
+        $student = Student::findorfail($id);
+        #### only admin can delete student using gates
 //        if (! Gate::allows('is-admin')) {
+////            dd("You are not allowed to delete student ");
 //            abort(403);
 //        }
+//
+//        $student->delete();
+//        return to_route('students.index');
 
-        $user= Auth::user();
-        $student = Student::findorfail($id);
+        ################# only admin can delete student using policy
+//        $user= Auth::user();
+////        dd(Gate::inspect("admin", $user));
+//
+//        $response= Gate::inspect('admin', $user);
+////        dd($response->allowed());
+//        if ($response->allowed()){
+//            $student = Student::findorfail($id);
+//            $student->delete();
+//            return to_route('students.index');
+//        }
+//
+//        return  abort(403);
 
-        $response = Gate::inspect('destroy', $student);
-//        dd($response->allowed());
-        if($response->allowed()) {
+        ################ admin or creator can delete post
+
+        $response= Gate::inspect('destroy', $student);
+//        dd($response);
+        if ($response->allowed()){
             $student->delete();
             return to_route('students.index');
         }
-
-
         return  abort(403);
-
 
 
     }

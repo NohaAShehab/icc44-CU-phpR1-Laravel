@@ -18,8 +18,14 @@
 </head>
 <body>
     <div id="app">
+
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                @auth()
+                    <h1>
+                        {{Auth::user()->name}}
+                    </h1>
+                @endauth
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
