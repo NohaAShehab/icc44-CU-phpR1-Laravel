@@ -7,8 +7,9 @@ use App\Models\Student;
 use Couchbase\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-//use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
+use App\Http\Resources\StudentResource;
+use Ramsey\Collection\Collection;
 
 
 class StudentController extends Controller
@@ -19,8 +20,9 @@ class StudentController extends Controller
     public function index()
     {
         //
-        $students= Student::all();
-        return $students;
+        $students= Student::all();  # array of objects
+//        return $students;
+        return StudentResource::collection($students);
     }
 
     /**
@@ -29,6 +31,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
 
+//        dd($request->all());
         $validator = Validator::make($request->all(), [
             "email"=>"unique:students"
         ]);
@@ -39,7 +42,11 @@ class StudentController extends Controller
 
 
         $student = Student::create($request->all());
-        return response($student, 201);
+//        return response($student, 201);
+//        return response()->json(new StudentResource($student), 201);
+        return new StudentResource($student);
+
+        # how to return with res
     }
 
     /**
@@ -48,7 +55,8 @@ class StudentController extends Controller
     public function show(Student $student)
     {
         //
-        return $student;
+//        return $student;
+        return new StudentResource($student);
     }
 
     /**
@@ -67,7 +75,12 @@ class StudentController extends Controller
 
 
         $student->update($request->all());
-        return response($student, 200);
+
+        $student_resource=  new StudentResource($student);
+//        return response($student_resource, 200);
+        return  new StudentResource($student);
+
+
     }
 
     /**

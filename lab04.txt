@@ -12,3 +12,64 @@
 'amazon'
 
 ## hide product -->
+
+
+
+{
+    "data":[],
+    "errors": [],
+    "messages":[]
+}
+
+
+next session
+
+1- complete Resources  ==> resource inside another resource
+
+2- authenticate apis using sanctum
+    bearer + token
+
+3- oauth protocol
+    --> login with github
+
+4- recommended libraries
+
+
+## connect angular  with laravel
+    --> JWT -->
+
+
+
+#### polymorphic relationship
+    post - -> comments ===> many comments
+    https://laravel.com/docs/10.x/eloquent-relationships#polymorphic-relationships
+
+
+### send email from laravel
+## deployment for application ===> uploads --> saving external storage google
+
+
+### queue jobs --> laravel
+https://laravel.com/docs/10.x/events#manually-interacting-with-the-queue
+
+
+### notification
+https://laravel.com/docs/10.x/broadcasting#notifications
+
+
+
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
