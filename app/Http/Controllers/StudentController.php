@@ -28,12 +28,14 @@ class StudentController extends Controller
 
 
         $students = Student::all();  # Eloquent orm
+//        return $students;
         return view('students.index', ['students'=>$students]);
     }
 
     function  index_db(){
 
         $students=  DB::table('students')->get();
+//        return $students;
         return view('students.index', ['students'=>$students]);
     }
 

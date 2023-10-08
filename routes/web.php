@@ -98,3 +98,10 @@ Route::post('students', [StudentController::class, 'store'])
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+################ Api
+# php artisan make:controller api/StudentController
+
+
+

@@ -29,6 +29,7 @@ class StoreTrackRequest extends FormRequest
 
     function messages()
     {
+        # use middleware --->
       return[
           'name.required'=>"Track must have name",
           'name.min'=>'Track name should be at least 5 chars'
