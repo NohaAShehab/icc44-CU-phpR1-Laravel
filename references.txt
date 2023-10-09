@@ -106,3 +106,14 @@ logged_in user can do something
 
 --> modify user to have role --> admin, manager, employee
 --> user logged
+
+
+
+###### socalite
+https://laravel.com/docs/10.x/socialite
+
+goto github
+settings
+then developer settings
+
+https://laravel.com/docs/10.x/socialite#introduction

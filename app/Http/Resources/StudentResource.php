@@ -25,6 +25,7 @@ class StudentResource extends JsonResource
           "studentname"=>$this->name,
           "grade"=>$this->grade,
             "email" => $this->email,
+            "owner"=> $this->creator_id,
             'trackname'=>$this->track ? $this->track->name: null,
 //            "track_id"=>$this->track,  # full track object
 //            "track_resource"=> new TrackResource($this->track)

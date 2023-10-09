@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ITIController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TrackController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +104,40 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 ################ Api
 # php artisan make:controller api/StudentController
+
+
+########## login with github
+use Laravel\Socialite\Facades\Socialite;
+
+Route::get('/auth/redirect', function () {
+//    dd("Hi github");
+    return Socialite::driver('github')->redirect();
+});
+
+Route::get('/auth/callback', function () {
+    $githubUser = Socialite::driver('github')->stateless()->user();
+
+    $user = User::where("email", $githubUser->email)->first();
+//    dd($user);
+//    dd($userfound);
+    if(! $user){
+
+            $user = User::updateOrCreate([
+            'github_id' => $githubUser->id,
+        ], [
+            'name' => $githubUser->name,
+            'email' => $githubUser->email,
+            'password'=> null,
+            'github_token' => $githubUser->token,
+            'github_refresh_token' => $githubUser->refreshToken,
+        ]);
+    }
+
+
+    Auth::login($user);
+
+    return redirect('/students');
+});
 
 
 

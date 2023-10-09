@@ -65,6 +65,8 @@
                             </div>
                         </div>
                     </form>
+
+                    <a href="/auth/redirect" class="btn btn-dark"> Login with Github </a>
                 </div>
             </div>
         </div>

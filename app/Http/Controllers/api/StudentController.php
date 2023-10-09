@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Student;
 use Couchbase\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Http\Resources\StudentResource;
@@ -14,6 +15,11 @@ use Ramsey\Collection\Collection;
 
 class StudentController extends Controller
 {
+
+    function  __construct(){
+
+        $this->middleware('auth:sanctum')->only('store');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -31,6 +37,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
 
+//        dd(Auth::id());
 //        dd($request->all());
         $validator = Validator::make($request->all(), [
             "name"=>"required",
@@ -43,6 +50,8 @@ class StudentController extends Controller
 
 
         $student = Student::create($request->all());
+        $student->creator_id = Auth::id();
+        $student->save();
 //        return response($student, 201);
 //        return response()->json(new StudentResource($student), 201);
         return (new StudentResource($student))->response()->setStatusCode(201);

@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +35,34 @@ Route::apiResource('students', StudentController::class);
 use App\Http\Controllers\api\TrackController;
 
 Route::apiResource('tracks', TrackController::class);
+
+
+######## Authenticate apis
+
+Route::post('/sanctum/token', function (Request $request) {
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+        'device_name' => 'required',
+    ]);
+
+    $user = User::where('email', $request->email)->first();
+    if (! $user || ! Hash::check($request->password, $user->password)) {
+        throw ValidationException::withMessages([
+            'email' => ['The provided credentials are incorrect.'],
+        ]);
+    }
+    return $user->createToken($request->device_name)->plainTextToken;
+});
+
+
+
+
+Route::post("/logout", function (Request $request){
+    # 1- get user based on token
+    $user = Auth::guard('sanctum')->user();
+    $token =$user->currentAccessToken();
+    $token->delete();
+
+    return response("Logged_out", 200);
+});
