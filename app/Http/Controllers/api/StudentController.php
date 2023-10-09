@@ -33,6 +33,7 @@ class StudentController extends Controller
 
 //        dd($request->all());
         $validator = Validator::make($request->all(), [
+            "name"=>"required",
             "email"=>"unique:students"
         ]);
 
@@ -44,7 +45,7 @@ class StudentController extends Controller
         $student = Student::create($request->all());
 //        return response($student, 201);
 //        return response()->json(new StudentResource($student), 201);
-        return new StudentResource($student);
+        return (new StudentResource($student))->response()->setStatusCode(201);
 
         # how to return with res
     }
@@ -91,7 +92,8 @@ class StudentController extends Controller
         //
 
         $student->delete();
-        return 'deleted';
+//        return 'deleted';
+        return response("Deleted", 204);
 
     }
 }

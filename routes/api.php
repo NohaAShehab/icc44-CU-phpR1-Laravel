@@ -27,3 +27,8 @@ Route::apiResource('students', StudentController::class);
 //  GET|HEAD        api/students/{student} ........................ students.show › api\StudentController@show
 //  PUT|PATCH       api/students/{student} ........................ students.update › api\StudentController@update
 //  DELETE          api/students/{student} .................... students.destroy › api\StudentController@destroy
+
+
+use App\Http\Controllers\api\TrackController;
+
+Route::apiResource('tracks', TrackController::class);
