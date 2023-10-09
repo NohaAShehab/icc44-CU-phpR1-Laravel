@@ -117,3 +117,19 @@ settings
 then developer settings
 
 https://laravel.com/docs/10.x/socialite#introduction
+
+
+carbon formatting datatime
+https://github.com/briannesbitt/Carbon
+
+
+https://laravel.com/docs/10.x/strings#method-fluent-str-slug
+
+what is new in laravel
+
+what-is-new-in-laravel
+
+
+Lab 05:
+generate all apis for products using Product resource
+- login with github
